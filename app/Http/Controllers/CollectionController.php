@@ -47,7 +47,7 @@ class CollectionController extends Controller
     public function show(int $id)
     {
         $collection = Collection::where('id', $id)->first();
-        $collections = Auth::user() ? Auth::user()->collections()->get() : [];
+        $collections = Collection::latest()->get();
 
         return view('dogears.index', [ 'title' => 'Collection: ' . $collection->name, 'dogears' => $collection->dogears()->simplePaginate(10), 'collections' => $collections ]);
     }

@@ -30,6 +30,8 @@
     </div>
     <div>
         <input type="submit" value="Login" />
+    </div>
+    <div>
         <a href="/register">Register</a>
     </div>
 </form>

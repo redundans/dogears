@@ -2,7 +2,7 @@
 @section('content')
 
 @if(isset($title))
-    <h1 class="text-xl font-bold mb-9">{{ $title }}</h1>
+    <h1>{{ $title }}</h1>
 @endif
 
 @if ($errors->any())
@@ -16,11 +16,15 @@
     </div>
 @endif
 
-<div class="p-6 border rounded bg-gray-100">
-    <form method="POST" action="{{ route('collections.store') }}" class="flex flex-row gap-6">
-        @csrf
-        <input type="text" id="name" name="name" class="grow" placeholder="Name" />
-        <input type="submit" value="Submit">
+<div>
+    <form method="POST" action="{{ route('collections.store') }}">
+        <div>
+            @csrf
+            <input type="text" id="name" name="name" class="grow" placeholder="Name" />
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
     </form>
 </div>
 

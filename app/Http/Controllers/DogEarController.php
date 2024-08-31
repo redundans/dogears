@@ -17,7 +17,7 @@ class DogEarController extends Controller
      */
     public function index()
     {
-        $collections = Auth::user() ? Auth::user()->collections()->get() : [];
+        $collections = Collection::latest()->get();
         return view('dogears.index', [ 'dogears' => DogEar::latest()->simplePaginate(10), 'collections' => $collections ]);
     }
 
@@ -34,7 +34,7 @@ class DogEarController extends Controller
     {
         $user = Auth::user();
         $collections = $user->collections()->get();
-        return view('dogears.create', [ 'title' => 'New link', 'collections' => $collections ]);
+        return view('dogears.create', [ 'title' => 'Add link', 'collections' => $collections ]);
     }
 
     /**

@@ -2,12 +2,8 @@
 @section('content')
 
 @if(isset($title))
-    <h1 class="text-xl font-bold mb-9">{{ $title }}</h1>
+    <h1>{{ $title }}</h1>
 @endif
-
-@include('search.form')
-
-@include('collections.list')
 
 @include('dogears.list')
 

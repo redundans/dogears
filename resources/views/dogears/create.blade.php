@@ -17,19 +17,23 @@
 @endif
 
 @if(auth()->user())
-<div class="p-6 border rounded bg-gray-100 mb-9">
 	<form method="POST" action="{{ route('dogears.store') }}" class="flex flex-row gap-6">
-		@csrf
-		<input type="text" id="url" name="url" class="grow" placeholder="https://" />
-		<select id="collections" name="collection" class="rounded-md border bg-white px-3">
-			<option value="" selected="">Choose collection</option>
-			@foreach($collections as $collection)
-				<option value="{{ $collection->id }}">{{ $collection->name }}</option>
-			@endforeach
-		</select>
-		<input type="submit" value="Submit">
+        <div>
+		  @csrf
+		  <input type="text" id="url" name="url" class="grow" placeholder="https://" />
+        </div>
+        <div>
+		    <select id="collections" name="collection" class="rounded-md border bg-white px-3">
+			    <option value="" selected="">Choose collection</option>
+			    @foreach($collections as $collection)
+				    <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+			    @endforeach
+		    </select>
+        </div>
+        <div>
+		  <input type="submit" value="Submit">
+        </div>
 	</form>
-</div>
 @endif
 
 @stop
