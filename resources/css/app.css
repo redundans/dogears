@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+    @apply underline hover:no-underline;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+    @apply border py-2 px-4 rounded;
+}
+
+input[type=submit] {
+    @apply border bg-black text-white hover:bg-white hover:text-black cursor-pointer py-2 px-4 rounded;
+}
