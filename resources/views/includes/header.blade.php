@@ -10,7 +10,7 @@
                 </tr>
                 <tr>
                     <td>
-                        2024-10-10
+                        2024-08-28
                     </td>
                 </tr>
                 <tr>
@@ -36,7 +36,6 @@
                         <li><a href="/logout">logout</a></li>
                     @else
                         <li><a href="/login">login</a></li>
-                        <!--<li><a href="/register">register</a></li>-->
                     @endif
 		        </ul>
             </li>
