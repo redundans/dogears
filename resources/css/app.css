@@ -49,7 +49,7 @@ table {
 
 :root {
   --font-family: "JetBrains Mono", monospace;
-  --line-height: 1.20rem;
+  --line-height: 1.35rem;
   --border-thickness: 2px;
   --text-color: #20261A;
   --text-color-alt: #768F79;
@@ -534,13 +534,13 @@ header {
 
 h1 {
   text-transform: uppercase;
-  margin: 3rem 0 1rem;
+  margin: calc(var(--line-height)*2) 0 0;
 }
 
 h2, h3 {
   text-transform: uppercase;
   font-size: 100%;
-  margin-top: 3rem;
+  margin-top: calc(var(--line-height)*2);
 }
 
 a:focus-visible {
@@ -554,7 +554,7 @@ a:hover {
 }
 
 main {
-  margin: 3rem 0;
+  margin: calc(var(--line-height)*2) 0;
 }
 
 ul li div {
@@ -565,6 +565,14 @@ ul.gap li {
     margin: calc(var(--line-height)*2) 0;
 }
 
+ul.gap li:first-child {
+    margin-top: var(--line-height);;
+}
+
+ul.gap li:last-child {
+    margin-bottom: var(--line-height);;
+}
+
 .gap-small {
     display: flex;
     flex-direction: column;
@@ -572,7 +580,7 @@ ul.gap li {
 }
 
 footer {
-  margin: 3rem 0 1rem;
+  margin: calc(var(--line-height)*2) 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -603,7 +611,7 @@ form {
 }
 
 #pagination {
-    margin: 3rem 0;
+    margin: calc(var(--line-height)*2) 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
