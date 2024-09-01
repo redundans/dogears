@@ -19,7 +19,7 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [Logoutcontroller::class, 'destroy'])->middleware('auth')->name('logout');
 
 Route::get('/collections', [CollectionController::class, 'index'])->name('collections');
-Route::get('/collections/new', [CollectionController::class, 'create'])->name('collections.create');
+Route::get('/collections/new', [CollectionController::class, 'create'])->middleware('auth')->name('collections.create');
 Route::get('/collections/{id}', [CollectionController::class, 'show'])->name('collections.show');
 Route::post('/collections', [CollectionController::class, 'store'])->middleware('auth')->name('collections.store');
 
@@ -32,10 +32,12 @@ Route::get('/', [DogEarController::class, 'index'])->name('dogears');
 Route::post('/links', [DogEarController::class, 'store'])->middleware('auth')->name('dogears.store');
 Route::get('/new', [DogEarController::class, 'create'])->middleware('auth')->name('dogears.create');
 Route::get('/links/{id}', [DogEarController::class, 'show'])->name('dogears.show');
+Route::get('/edit/{id}', [DogEarController::class, 'edit'])->middleware('auth')->name('dogears.edit');
+Route::post('/edit/{id}', [DogEarController::class, 'update'])->middleware('auth')->name('dogears.update');
 
 
 Route::post('/', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
 
-Route::get('/delete/{id}', [DogEarController::class, 'destroy'])->name('dogears.destroy');
+Route::get('/delete/{id}', [DogEarController::class, 'destroy'])->middleware('auth')->name('dogears.destroy');
 
 Route::get('/search', [SearchController::class, 'show'])->name('search.show');

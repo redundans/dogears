@@ -13,6 +13,24 @@
         @if($dogear->excerpt)
             <p>{{ $dogear->excerpt }}</p>
         @endif
+        @if(auth()->user())
+        <p>
+            <a href="{{ route('dogears.edit', ['id' => $dogear->id]) }}"">Edit</a>
+            <a href="{{ route('dogears.destroy', ['id' => $dogear->id]) }}"">Delete</a>
+        </p>
+        @endif
+        @if(count($dogear->tags)>0)
+        <div>
+            <h2>Tags</h2>
+            <ul>
+            @foreach($dogear->tags as $tag)
+                <li>
+                    <a href="{{ route('tags.show', ['slug' => $tag->slug]) }}">{{ $tag->name }}</a>
+                </li>
+            @endforeach
+            </ul>
+        </div>
+        @endif
         <div>
             <h2>Collection</h2>
             <ul>

@@ -75,7 +75,7 @@ class DogEarController extends Controller
         $dogear->users()->attach($user->id);
 
         if($request->collection) {
-            $dogear->collections()->detach($request->collection);
+            $dogear->collections()->detach();
             $dogear->collections()->attach($request->collection);
         }
 
@@ -99,17 +99,38 @@ class DogEarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DogEar $dogEar)
+    public function edit(int $id)
     {
-        //
+        $dogear = DogEar::where('id', $id)->first();
+        $tags = Tag::latest()->get();
+        $collections = Collection::latest()->get();
+        if(!$dogear)
+        {
+            return redirect( route('dogears') );
+        }
+        return view('dogears.edit', [ 'title' => $dogear->name, 'dogear' => $dogear, 'tags' => $tags, 'collections' => $collections ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DogEar $dogEar)
+    public function update(Request $request, int $id)
     {
-        //
+        $request->validate([
+            'url' => 'required|url',
+            'name' => 'required',
+            'description' => 'required',
+            'collections' => 'required',
+        ]);
+        $dogear = DogEar::where('id', $id)->first();
+        $dogear->name = $request->name;
+        $dogear->description = $request->description;
+        $dogear->collections()->detach();
+        if(0!==$request->collections){
+            $dogear->collections()->attach($request->collections);
+        }
+        $dogear->save();
+        return view('dogears.show', [ 'title' => $dogear->name, 'dogear' => $dogear ]);
     }
 
     /**
