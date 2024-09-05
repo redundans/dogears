@@ -49,7 +49,7 @@ class CollectionController extends Controller
         $collection = Collection::where('id', $id)->first();
         $collections = Collection::latest()->get();
 
-        return view('dogears.index', [ 'title' => 'Collection: ' . $collection->name, 'dogears' => $collection->dogears()->simplePaginate(10), 'collections' => $collections ]);
+        return view('collections.show', [ 'dogears' => $collection->dogears()->simplePaginate(10), 'collections' => $collections, 'collection' => $collection ]);
     }
 
     /**
@@ -71,8 +71,11 @@ class CollectionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Collection $collection)
+    public function destroy(int $id)
     {
+        $collection = Collection::find($id);
+        $collection->delete();
+        return redirect( route('collections') );
         //
     }
 }

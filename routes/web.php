@@ -22,6 +22,7 @@ Route::get('/collections', [CollectionController::class, 'index'])->name('collec
 Route::get('/collections/new', [CollectionController::class, 'create'])->middleware('auth')->name('collections.create');
 Route::get('/collections/{id}', [CollectionController::class, 'show'])->name('collections.show');
 Route::post('/collections', [CollectionController::class, 'store'])->middleware('auth')->name('collections.store');
+Route::get('/collections/delete/{id}', [CollectionController::class, 'destroy'])->middleware('auth')->name('collections.destroy');
 
 Route::get('/user/{id}', [DogEarController::class, 'user'])->name('users.show');
 
